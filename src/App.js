@@ -25,7 +25,7 @@ class App extends Component {
       this.setState({ ishtmlGenerate: true, arrayBuffer: arrayBuffer });
       // mammoth.convertToHtml({ arrayBuffer: arrayBuffer }).then(function (resultObject) {
       //   result1.innerHTML = resultObject.value;
-        // console.log(resultObject.value)
+      // console.log(resultObject.value)
       // })
       // console.timeEnd();
 
@@ -53,12 +53,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <input type="file" onChange={this.parseWordDocxFile} />
-        <div>
-        <button onClick={() => this._getFormatedHtml()}>Generate Html</button>
+      <div className="container">
+        <h1>Render Word to HTML file</h1>
+        <div className="row justify-content-md-center">
+
+          <div class="col col-lg-12">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile" onChange={this.parseWordDocxFile} />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <div class="col col-lg-12"><br /></div>
+
+          <div class="col col-lg-12">
+            <button class="btn btn-primary btn-lg active" onClick={() => this._getFormatedHtml()}>Render Html</button>
+          </div>
+
         </div>
-        <div>
+        <div className="container-md">
           {this.state.html && <div dangerouslySetInnerHTML={{ __html: this.state.html }} />}
         </div>
       </div>
